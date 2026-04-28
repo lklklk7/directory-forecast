@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Twitch Rank Badges",
+  "version": "0.1.0",
+  "description": "Displays League of Legends rank badges on Twitch directory thumbnails.",
+
+  "permissions": ["storage"],
+
+  "host_permissions": [
+    "https://www.twitch.tv/*",
+    "http://localhost:3000/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.twitch.tv/directory/category/league-of-legends*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "action": {
+    "default_title": "Twitch Rank Badges"
+  }
+}

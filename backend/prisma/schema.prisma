@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model LinkedAccount {
+  id            String    @id @default(cuid())
+  twitchId      String    @unique @map("twitch_id")
+  twitchLogin   String    @map("twitch_login")
+  riotPuuid     String    @map("riot_puuid")
+  region        String
+  cachedTier    String?   @map("cached_tier")
+  cachedRank    String?   @map("cached_rank")
+  cachedLp      Int?      @map("cached_lp")
+  rankUpdatedAt DateTime? @map("rank_updated_at")
+  createdAt     DateTime  @default(now()) @map("created_at")
+
+  @@map("linked_accounts")
+}
