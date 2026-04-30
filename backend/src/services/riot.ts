@@ -95,6 +95,16 @@ async function getSoloRank(
   return { tier: solo.tier, rank: solo.rank, lp: solo.leaguePoints };
 }
 
+// Refresh rank for an already-stored PUUID (skips account-v1 lookup)
+export async function getRankByPuuid(
+  puuid: string,
+  platform: Platform
+): Promise<RankInfo | null> {
+  const summonerId = await getSummonerId(puuid, platform);
+  if (!summonerId) return null;
+  return getSoloRank(summonerId, platform);
+}
+
 // Combined: fetch PUUID + rank in one call
 export async function getRankByRiotId(
   gameName: string,
