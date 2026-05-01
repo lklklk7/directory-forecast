@@ -4,6 +4,7 @@ import session from "express-session";
 import { authRouter } from "./routes/auth";
 import { ranksRouter } from "./routes/ranks";
 import { linkRouter } from "./routes/link";
+import { pagesRouter } from "./routes/pages";
 
 export function createApp() {
   const app = express();
@@ -35,6 +36,7 @@ export function createApp() {
   app.use("/auth", authRouter);
   app.use("/api/ranks", ranksRouter);
   app.use("/api/link", linkRouter);
+  app.use("/", pagesRouter);
 
   app.get("/health", (_req, res) => {
     res.json({ ok: true });
