@@ -1,8 +1,11 @@
 import { Router } from "express";
 import { prisma } from "../lib/prisma";
 import { getRankByPuuid, Platform } from "../services/riot";
+import { rateLimit } from "../middleware/rateLimit";
 
 export const ranksRouter = Router();
+
+ranksRouter.use(rateLimit);
 
 // Ranks are considered fresh for 4 hours.
 const CACHE_TTL_MS = 4 * 60 * 60 * 1000;
