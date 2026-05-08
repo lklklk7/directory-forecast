@@ -202,11 +202,3 @@ linked_accounts (
 | `FRONTEND_URL` | Where to redirect after OAuth (same as BASE_URL for MVP) |
 
 ---
-
-## Out of scope for MVP
-
-- Chat badges (a separate surface owned by extensions like EloWard)
-- Games other than League of Legends
-- Rank badges on individual stream pages
-- Real-time rank updates
-- Chrome Web Store publishing
