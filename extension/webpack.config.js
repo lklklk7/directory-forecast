@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
@@ -26,6 +27,14 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [{ from: "public", to: "." }],
+    }),
+    // Inject backend URL at build time.
+    // Dev:  npm run build  (defaults to localhost)
+    // Prod: BACKEND_URL=https://your-app.onrender.com npm run build
+    new webpack.DefinePlugin({
+      BACKEND_URL: JSON.stringify(
+        process.env.BACKEND_URL || "http://localhost:3000"
+      ),
     }),
   ],
 };

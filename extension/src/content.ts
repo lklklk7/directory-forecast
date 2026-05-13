@@ -2,7 +2,10 @@ import { injectStyles } from "./styles";
 import { fetchRanks } from "./api";
 import type { RankMap } from "./api";
 
-const BACKEND = "http://localhost:3000";
+// Injected by webpack DefinePlugin at build time.
+// Set BACKEND_URL env var when building for production.
+declare const BACKEND_URL: string;
+const BACKEND = BACKEND_URL;
 const BADGE_ATTR = "data-rank-badge";
 
 // Extract the Twitch login from a stream card.
