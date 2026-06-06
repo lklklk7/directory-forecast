@@ -2,8 +2,6 @@
 
 A Chrome extension that overlays League of Legends rank badges on streamer thumbnails in the Twitch directory — so viewers can see a streamer's rank at a glance without clicking into their stream.
 
-![Extension preview showing rank badges on Twitch stream cards](https://placehold.co/800x400?text=Extension+Preview)
-
 ---
 
 ## What it does
